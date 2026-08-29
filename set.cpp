@@ -68,29 +68,57 @@ using namespace std;
 // }
 
 // In string all Alphabet present there or not;
-bool checkAllAlphabet(string s){
+// bool checkAllAlphabet(string s){
 
-    if(s.length()<26){
-        return false;
-    }
+//     if(s.length()<26){
+//         return false;
+//     }
 
-    transform(s.begin(), s.end(), s.begin(), ::tolower);
+//     transform(s.begin(), s.end(), s.begin(), ::tolower);
 
-    set<char> s1;
-    for(auto ch: s){
-        s1.insert(ch);
-    }
-    return(s1.size() == 26);
-}
+//     set<char> s1;
+//     for(auto ch: s){
+//         s1.insert(ch);
+//     }
+//     return(s1.size() == 26);
+// }
 
+// int main(){
+//     string k;
+//     cin>>k;
+
+//     if(checkAllAlphabet(k) ){
+//         cout<<"yes";
+//     }else{
+//         cout<<"no";
+//     }
+//     return 0;
+// }
+
+
+//fine the second smallest value from vector;
 int main(){
-    string k;
-    cin>>k;
 
-    if(checkAllAlphabet(k) ){
-        cout<<"yes";
-    }else{
-        cout<<"no";
+    int n;
+    cin>>n;
+    
+    vector<int> v1(n);
+
+    cout<<"vector elements: ";
+    for(int i = 0; i<n ; i++){
+        cin>>v1[i];
     }
+    cout<<endl;
+
+    set<int> s1;
+    for(auto x:v1){
+        s1.insert(x);
+    }
+
+    auto it = s1.begin();
+    //advance(it, 1);  //anyone can you use;
+    it++;
+    cout<<"Second smallest value: "<<*it<<endl;
+
     return 0;
 }
