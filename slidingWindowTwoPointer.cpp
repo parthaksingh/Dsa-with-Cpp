@@ -37,28 +37,70 @@ using namespace std;
 
 // Implement maximum sum using sliding window
 
+// int findMaxSum(vector<int>& nums, int k){
+//     int n = nums.size();
+//     int sum = 0, maxSum = 0;
+    
+//     for(int i = 0; i<k; i++){
+//         sum+=nums[i];
+//     }
+//     maxSum = sum;
+
+//     for(int i = k; i < n; i++){
+//         sum+=nums[i];
+//         sum-=nums[i - k];
+
+//         maxSum = max(sum, maxSum);
+//     }
+//     return maxSum;
+// }
+
+// int main(){
+//     vector<int> v1 = {6,2,3,4,8,7,4,1,4};
+//     int key = 3;
+
+//     cout<<findMaxSum(v1, key);
+//     return 0;
+// }
+
+
+//Implement maximum sum using sliding window element position and element;
+
 int findMaxSum(vector<int>& nums, int k){
     int n = nums.size();
-    int sum = 0, maxSum = 0;
-    
+    int sum = 0, maxSum = 0, strt;
+
     for(int i = 0; i<k; i++){
         sum+=nums[i];
     }
     maxSum = sum;
 
-    for(int i = k; i < n; i++){
-        sum+=nums[i];
-        sum-=nums[i - k];
+    for(int i = k; i <n; i++){
+        sum += nums[i];
+        sum-= nums[i - k];
+        
+        if(sum>=maxSum){
+            maxSum = sum;
 
-        maxSum = max(sum, maxSum);
-    }
+            strt = i - k +1;
+
+         }
+        }
+        for(int i = strt; i<strt+k; i++){
+                cout<<nums[i]<<" ";
+            }
+            cout<<endl;
+            for(int i= strt; i<strt+k; i++){
+                cout<<i+1<<" ";
+            }
+            cout<<endl;
+    
     return maxSum;
 }
-
 int main(){
-    vector<int> v1 = {6,2,3,4,8,7,4,1,4};
+    vector<int> v1 = {6,2,1,4,5,6,4,2,7};
     int key = 3;
-
+    
     cout<<findMaxSum(v1, key);
     return 0;
 }
