@@ -135,30 +135,60 @@ using namespace std;
 //     return 0;
 // }
 
-int findMaxSubarray(vector<int>& nums, int k, int m){
-    int n = nums.size();
-    int l = 0, r = 0, count = 0, sum = 0;
-    int target = k * m;
+// int findMaxSubarray(vector<int>& nums, int k, int m){
+//     int n = nums.size();
+//     int l = 0, r = 0, count = 0, sum = 0;
+//     int target = k * m;
 
-    while(r<n){
-        sum += nums[r];
+//     while(r<n){
+//         sum += nums[r];
 
-        if(r - l + 1 == k){
-            if(sum >= target){
-                count++;
+//         if(r - l + 1 == k){
+//             if(sum >= target){
+//                 count++;
+//             }
+//             sum -= nums[l];
+//             l++;
+//         }
+//         r++;
+//     }
+//     return count;
+// }
+
+// int main(){
+//     vector<int> v1 = {2,2,2,5,6,4,4,6};
+//     int key = 3;
+//     int m = 4;
+//     cout<<findMaxSubarray(v1, key, m)<<endl;
+//     return 0;
+// }
+
+
+int fun(string s){
+    int n = s.size();
+    int maxLen = 0;
+
+    for(int i = 0; i<n; i++){
+        int hash[256] = {0};
+
+        for(int j = i; j < n ; j ++){
+            if(hash[s[j]] == 1){
+                break;
             }
-            sum -= nums[l];
-            l++;
+            int len = j - i + 1;
+            maxLen = max(maxLen, len);
+
+            hash[s[j]] = 1;
         }
-        r++;
     }
-    return count;
+        return maxLen;
 }
 
 int main(){
-    vector<int> v1 = {2,2,2,5,6,4,4,6};
-    int key = 3;
-    int m = 4;
-    cout<<findMaxSubarray(v1, key, m)<<endl;
+    string s = "cadbzabcd";
+    //cin >> s;
+
+    cout<<fun(s)<<endl;
     return 0;
 }
+
