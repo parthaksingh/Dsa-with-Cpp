@@ -164,31 +164,61 @@ using namespace std;
 // }
 
 
+//Add brute force longest substring solution
+// int fun(string s){
+//     int n = s.size();
+//     int maxLen = 0;
+
+//     for(int i = 0; i<n; i++){
+//         int hash[256] = {0};
+
+//         for(int j = i; j < n ; j ++){
+//             if(hash[s[j]] == 1){
+//                 break;
+//             }
+//             int len = j - i + 1;
+//             maxLen = max(maxLen, len);
+
+//             hash[s[j]] = 1;
+//         }
+//     }
+//         return maxLen;
+// }
+
+// int main(){
+//     string s = "cadbzabcd";
+//     //cin >> s;
+
+//     cout<<fun(s)<<endl;
+//     return 0;
+// }
+
+
+//optimal Solution;
+
 int fun(string s){
     int n = s.size();
-    int maxLen = 0;
-
-    for(int i = 0; i<n; i++){
-        int hash[256] = {0};
-
-        for(int j = i; j < n ; j ++){
-            if(hash[s[j]] == 1){
-                break;
+    int l = 0, r = 0, maxlen = 0;
+    int hash[256];
+    fill(hash, hash+256, -1);
+    while(r<n){
+        if(hash[s[r]] != -1){
+            if(hash[s[r]] >= l){
+                l = hash[s[r]] + 1;
             }
-            int len = j - i + 1;
-            maxLen = max(maxLen, len);
-
-            hash[s[j]] = 1;
         }
+        int len = r - l + 1;
+        maxlen = max(maxlen, len);
+
+        hash[s[r]] = r;
+        r++;
     }
-        return maxLen;
+    return maxlen;
 }
+
 
 int main(){
-    string s = "cadbzabcd";
-    //cin >> s;
-
-    cout<<fun(s)<<endl;
+    string s = "cadbzeabcd";
+    cout<<"MaxLen = "<<fun(s)<<endl;
     return 0;
 }
-
