@@ -5,32 +5,32 @@ using namespace std;
 
 
 // Implement longest subarray with sum constraint
-int findMaxLen(vector<int>& nums, int k){
+// int findMaxLen(vector<int>& nums, int k){
     
-    int n = nums.size();
-    int l = 0, r = 0, sum = 0, Maxlen = 0;
+//     int n = nums.size();
+//     int l = 0, r = 0, sum = 0, Maxlen = 0;
 
-    while(r<n){
-        sum += nums[r];
+//     while(r<n){
+//         sum += nums[r];
 
-        if(sum>k){
-            sum-=nums[l];
-            l++;
-        }
-        Maxlen = max(Maxlen, r-l+1);
+//         if(sum>k){
+//             sum-=nums[l];
+//             l++;
+//         }
+//         Maxlen = max(Maxlen, r-l+1);
 
-        r++;
-    }
-    return Maxlen;
-}
+//         r++;
+//     }
+//     return Maxlen;
+// }
 
-int main(){
-    vector<int> v1 = {2,5,1,7,10};
-    int key = 14;
+// int main(){
+//     vector<int> v1 = {2,5,1,7,10};
+//     int key = 14;
 
-    cout<<findMaxLen(v1, key)<<endl;
-    return 0;
-}
+//     cout<<findMaxLen(v1, key)<<endl;
+//     return 0;
+// }
 
 
 //Implement maximum sum from both ends
@@ -134,3 +134,31 @@ int main(){
 //     cout<<findMaxSum(v1, key);
 //     return 0;
 // }
+
+int findMaxSubarray(vector<int>& nums, int k, int m){
+    int n = nums.size();
+    int l = 0, r = 0, count = 0, sum = 0;
+    int target = k * m;
+
+    while(r<n){
+        sum += nums[r];
+
+        if(r - l + 1 == k){
+            if(sum >= target){
+                count++;
+            }
+            sum -= nums[l];
+            l++;
+        }
+        r++;
+    }
+    return count;
+}
+
+int main(){
+    vector<int> v1 = {2,2,2,5,6,4,4,6};
+    int key = 3;
+    int m = 4;
+    cout<<findMaxSubarray(v1, key, m)<<endl;
+    return 0;
+}
