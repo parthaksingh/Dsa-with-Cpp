@@ -224,32 +224,54 @@ using namespace std;
 // }
 
 
+//Add brute-force longest subarray with at most k zeros Max Consecutive Ones III ;
+
+// int fun(vector<int>& nums, int k){
+//     int maxlen = 0;
+    
+//     for(int i = 0; i < nums.size(); i++){
+//         int count = 0;
+//         for(int j = i; j < nums.size(); j++){
+//             if(nums[j] == 0){
+//                 count++;
+//             }
+//             if(count <= k){
+//                 int len = j - i + 1;
+//                 maxlen = max(maxlen, len);
+
+//             }else{
+//                 break;
+//             }
+//         }
+//     }
+//     return maxlen;
+// }
+
+//Add optimal solution longest subarray with at most k zeros Max Consecutive Ones III ;
 
 int fun(vector<int>& nums, int k){
-    int maxlen = 0;
+    int l = 0, r = 0, maxlen = 0, zeros = 0;
     
-    for(int i = 0; i < nums.size(); i++){
-        int count = 0;
-        for(int j = i; j < nums.size(); j++){
-            if(nums[j] == 0){
-                count++;
-            }
-            if(count <= k){
-                int len = j - i + 1;
-                maxlen = max(maxlen, len);
-
-            
-            
-            }else{
-                break;
-            }
+    while(r < nums.size()){
+        if(nums[r] == 0){
+            zeros++;
         }
+        
+            if(zeros > k){
+                if(nums[l] == 0){
+                zeros--;
+                }
+                l++;
+            }
+            int len = r - l + 1;
+            maxlen = max(maxlen, len);
+        r++;
     }
     return maxlen;
 }
 
 int main(){
-    vector<int> v1 = {1,1,1,0,0,0,1,1,1,1,0};
+    vector<int> v1 = {1,1,1,0,0,0,1,1,1,1,1,0};
     int key = 2;
     cout<<fun(v1, key)<<endl;
     return 0;
