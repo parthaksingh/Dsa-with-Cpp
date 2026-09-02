@@ -196,29 +196,61 @@ using namespace std;
 
 //optimal Solution;
 
-int fun(string s){
-    int n = s.size();
-    int l = 0, r = 0, maxlen = 0;
-    int hash[256];
-    fill(hash, hash+256, -1);
-    while(r<n){
-        if(hash[s[r]] != -1){
-            if(hash[s[r]] >= l){
-                l = hash[s[r]] + 1;
+// int fun(string s){
+//     int n = s.size();
+//     int l = 0, r = 0, maxlen = 0;
+//     int hash[256];
+//     fill(hash, hash+256, -1);
+//     while(r<n){
+//         if(hash[s[r]] != -1){
+//             if(hash[s[r]] >= l){
+//                 l = hash[s[r]] + 1;
+//             }
+//         }
+//         int len = r - l + 1;
+//         maxlen = max(maxlen, len);
+
+//         hash[s[r]] = r;
+//         r++;
+//     }
+//     return maxlen;
+// }
+
+
+// int main(){
+//     string s = "cadbzeabcd";
+//     cout<<"MaxLen = "<<fun(s)<<endl;
+//     return 0;
+// }
+
+
+
+int fun(vector<int>& nums, int k){
+    int maxlen = 0;
+    
+    for(int i = 0; i < nums.size(); i++){
+        int count = 0;
+        for(int j = i; j < nums.size(); j++){
+            if(nums[j] == 0){
+                count++;
+            }
+            if(count <= k){
+                int len = j - i + 1;
+                maxlen = max(maxlen, len);
+
+            
+            
+            }else{
+                break;
             }
         }
-        int len = r - l + 1;
-        maxlen = max(maxlen, len);
-
-        hash[s[r]] = r;
-        r++;
     }
     return maxlen;
 }
 
-
 int main(){
-    string s = "cadbzeabcd";
-    cout<<"MaxLen = "<<fun(s)<<endl;
+    vector<int> v1 = {1,1,1,0,0,0,1,1,1,1,0};
+    int key = 2;
+    cout<<fun(v1, key)<<endl;
     return 0;
 }
