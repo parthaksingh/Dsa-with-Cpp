@@ -33,7 +33,7 @@ using namespace std;
 // }
 
 
-//Implement maximum sum from both ends
+//Implement maximum sum from both start and ends
 
 // int findMaxSum(vector<int>& nums, int k){
     
@@ -98,7 +98,7 @@ using namespace std;
 
 // int findMaxSum(vector<int>& nums, int k){
 //     int n = nums.size();
-//     int sum = 0, maxSum = 0, strt;
+//     int sum = 0, maxSum = 0, start = 0;
 
 //     for(int i = 0; i<k; i++){
 //         sum+=nums[i];
@@ -112,15 +112,15 @@ using namespace std;
 //         if(sum>=maxSum){
 //             maxSum = sum;
 
-//             strt = i - k +1;
+//             start = i - k +1;
 
 //          }
 //         }
-//         for(int i = strt; i<strt+k; i++){
+//         for(int i = start; i<start+k; i++){
 //                 cout<<nums[i]<<" ";
 //             }
 //             cout<<endl;
-//             for(int i= strt; i<strt+k; i++){
+//             for(int i= start; i<start+k; i++){
 //                 cout<<i+1<<" ";
 //             }
 //             cout<<endl;
@@ -249,30 +249,31 @@ using namespace std;
 
 //Add optimal solution longest subarray with at most k zeros Max Consecutive Ones III ;
 
-int fun(vector<int>& nums, int k){
-    int l = 0, r = 0, maxlen = 0, zeros = 0;
+// int fun(vector<int>& nums, int k){
+//     int l = 0, r = 0, maxlen = 0, zeros = 0;
     
-    while(r < nums.size()){
-        if(nums[r] == 0){
-            zeros++;
-        }
+//     while(r < nums.size()){
+//         if(nums[r] == 0){
+//             zeros++;
+//         }
         
-            if(zeros > k){
-                if(nums[l] == 0){
-                zeros--;
-                }
-                l++;
-            }
-            int len = r - l + 1;
-            maxlen = max(maxlen, len);
-        r++;
-    }
-    return maxlen;
-}
+//             if(zeros > k){
+//                 if(nums[l] == 0){
+//                 zeros--;
+//                 }
+//                 l++;
+//             }
+//             int len = r - l + 1;
+//             maxlen = max(maxlen, len);
+//         r++;
+//     }
+//     return maxlen;
+// }
 
-int main(){
-    vector<int> v1 = {1,1,1,0,0,0,1,1,1,1,1,0};
-    int key = 2;
-    cout<<fun(v1, key)<<endl;
-    return 0;
-}
+// int main(){
+//     vector<int> v1 = {1,1,1,0,0,0,1,1,1,1,1,0};
+//     int key = 2;
+//     cout<<fun(v1, key)<<endl;
+//     return 0;
+// }
+
