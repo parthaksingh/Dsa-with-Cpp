@@ -280,31 +280,57 @@ using namespace std;
 
 //fruits into bucket;
 
+// int fun(vector<int>& nums, int k){
+//     int l = 0, r = 0, maxlen = 0;
+//     unordered_map<int, int> mp;
+
+//     while(r < nums.size()){
+//         mp[nums[r]]++;
+//         if(mp.size() > k){
+//             while(mp.size() > k){     //for optimal solution remove while loop; below 
+//                 mp[nums[l]]--;
+//                 if(mp[nums[l]] == 0){
+//                     mp.erase(nums[l]);    
+//                 }
+//                 l++;
+//             }
+//         }
+//         if(mp.size() <= k){
+//             int len = r - l + 1;
+//             maxlen= max(maxlen, len);
+//         }
+//         r++;
+//     }
+//     return maxlen;
+// }
+
+//for optimal solution remove while loop;
 int fun(vector<int>& nums, int k){
-    int l = 0, r = 0, maxlen = 0;
+    int r = 0, l = 0, maxlen = 0;
+    int n = nums.size();
     unordered_map<int, int> mp;
 
-    while(r < nums.size()){
+    while(r < n){
         mp[nums[r]]++;
+
         if(mp.size() > k){
-            while(mp.size() > k){     //for optimal solution remove while loop;
-                mp[nums[l]]--;
-                if(mp[nums[l]] == 0){
-                    mp.erase(nums[l]);    
-                }
-                l++;
+            mp[nums[l]]--;
+            if(mp[nums[l]] == 0){
+                mp.erase(nums[l]);
             }
+            l++;
         }
         if(mp.size() <= k){
-            int len = r - l + 1;
-            maxlen= max(maxlen, len);
+            maxlen = max(maxlen, r - l + 1);
         }
         r++;
     }
     return maxlen;
 }
+
+
 int main(){
-    vector<int> v1 = {3,3,3,3,1,2,1,1,2,3,3,4};
+    vector<int> v1 = {3,3,3,3,1,2,1,1,2,1,3,3,4};
     int key = 2;
     cout<<fun(v1, key)<<endl;
     return 0;
