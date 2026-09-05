@@ -35,41 +35,66 @@ using namespace std;
 //     return 0;
 // }
 
-bool canMakeequal(vector<string> &v){
-    unordered_map<char, int>mp;
+// bool canMakeequal(vector<string> &v){
+//     unordered_map<char, int>mp;
 
-    for(auto str: v){
-        for(char k:str){
-            mp[k]++;
-        }
-    }
-    int n = v.size();
-    for(auto p : mp){
-        if(p.second%n != 0){
-            return false;
-        }
-    }
-    return true;
-}
+//     for(auto str: v){
+//         for(char k:str){
+//             mp[k]++;
+//         }
+//     }
+//     int n = v.size();
+//     for(auto p : mp){
+//         if(p.second%n != 0){
+//             return false;
+//         }
+//     }
+//     return true;
+// }
 
-int main(){
+// int main(){
 
-    int n;
-    cin >> n;
+//     int n;
+//     cin >> n;
 
-    vector<string> v(n);
+//     vector<string> v(n);
 
-    for(int i = 0; i < n; i++){
-        cin >> v[i];
-    }
+//     for(int i = 0; i < n; i++){
+//         cin >> v[i];
+//     }
 
-    cout << (canMakeequal(v) ? "Yes" : "No") << endl;
+//     cout << (canMakeequal(v) ? "Yes" : "No") << endl;
 
-    return 0;
-}
+//     return 0;
+// }
 //output 
 // 3
 // collegeee
 // coll
 // collegge
 //output: yes
+
+
+//asked at TCS exam
+void fun(string s){
+
+    unordered_map<char, int> hash;
+
+    for(auto x: s){
+        hash[x]++;
+    }
+    for(auto y:s){
+        if(hash[y] > 0){
+            cout<<"'"<<y<<"'"<<" "<<hash[y]<<" ";
+        }
+
+        hash[y] = 0;
+    }
+    cout<<endl;
+}
+int main(){
+    string s = "programming";
+
+    fun(s);
+    return 0;
+}

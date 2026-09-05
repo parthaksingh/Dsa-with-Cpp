@@ -186,15 +186,6 @@ using namespace std;
 //         return maxLen;
 // }
 
-// int main(){
-//     string s = "cadbzabcd";
-//     //cin >> s;
-
-//     cout<<fun(s)<<endl;
-//     return 0;
-// }
-
-
 //optimal Solution;
 
 // int fun(string s){
