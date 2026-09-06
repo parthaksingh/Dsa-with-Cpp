@@ -296,33 +296,67 @@ using namespace std;
 // }
 
 //for optimal solution remove while loop;
-int fun(vector<int>& nums, int k){
+// int fun(vector<int>& nums, int k){
+//     int r = 0, l = 0, maxlen = 0;
+//     int n = nums.size();
+//     unordered_map<int, int> mp;
+
+//     while(r < n){
+//         mp[nums[r]]++;
+
+//         if(mp.size() > k){
+//             mp[nums[l]]--;
+//             if(mp[nums[l]] == 0){
+//                 mp.erase(nums[l]);
+//             }
+//             l++;
+//         }
+//         if(mp.size() <= k){
+//             maxlen = max(maxlen, r - l + 1);
+//         }
+//         r++;
+//     }
+//     return maxlen;
+// }
+
+
+// int main(){
+//     vector<int> v1 = {3,3,3,3,1,2,1,1,2,1,3,3,4};
+//     int key = 2;
+//     cout<<fun(v1, key)<<endl;
+//     return 0;
+// }
+
+int fun1(string s , int k){
+
+    int n = s.size();
     int r = 0, l = 0, maxlen = 0;
-    int n = nums.size();
-    unordered_map<int, int> mp;
+    unordered_map<char, int> mp;
 
     while(r < n){
-        mp[nums[r]]++;
-
-        if(mp.size() > k){
-            mp[nums[l]]--;
-            if(mp[nums[l]] == 0){
-                mp.erase(nums[l]);
+        mp[s[r]]++;
+        while(mp.size() > k){
+            mp[s[l]]--;
+            if(mp[s[l]] == 0){
+                mp.erase(s[l]);
             }
             l++;
         }
-        if(mp.size() <= k){
-            maxlen = max(maxlen, r - l + 1);
+        if(mp.size()<= k){
+            int len = r - l + 1;
+            maxlen = max(maxlen, len);
         }
         r++;
+
+       
     }
-    return maxlen;
+     return maxlen;
+
+
 }
-
-
 int main(){
-    vector<int> v1 = {3,3,3,3,1,2,1,1,2,1,3,3,4};
-    int key = 2;
-    cout<<fun(v1, key)<<endl;
+    string s = "aaabbccd";
+    int key = 3;
+    cout<<fun1(s, key)<<endl;
     return 0;
 }
