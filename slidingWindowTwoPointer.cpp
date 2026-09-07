@@ -327,36 +327,61 @@ using namespace std;
 //     return 0;
 // }
 
-int fun1(string s , int k){
+//. Longest Substring with At Most K Distinct Characters
+// int fun1(string s , int k){
 
-    int n = s.size();
-    int r = 0, l = 0, maxlen = 0;
-    unordered_map<char, int> mp;
+//     int n = s.size();
+//     int r = 0, l = 0, maxlen = 0;
+//     unordered_map<char, int> mp;
 
-    while(r < n){
-        mp[s[r]]++;
-        while(mp.size() > k){
-            mp[s[l]]--;
-            if(mp[s[l]] == 0){
-                mp.erase(s[l]);
-            }
-            l++;
-        }
-        if(mp.size()<= k){
-            int len = r - l + 1;
-            maxlen = max(maxlen, len);
-        }
-        r++;
+//     while(r < n){
+//         mp[s[r]]++;
+//         while(mp.size() > k){
+//             mp[s[l]]--;
+//             if(mp[s[l]] == 0){
+//                 mp.erase(s[l]);
+//             }
+//             l++;
+//         }
+//         if(mp.size()<= k){
+//             int len = r - l + 1;
+//             maxlen = max(maxlen, len);
+//         }
+//         r++;
 
        
+//     }
+//      return maxlen;
+
+
+// }
+// int main(){
+//     string s = "aaabbccd";
+//     int key = 3;
+//     cout<<fun1(s, key)<<endl;
+//     return 0;
+// }
+
+//Add substring counting for abc
+int fun(string s){
+    int n = s.size();
+    int count = 0;
+    int lastseen[3] = {-1, -1, -1};
+    
+    for(int i = 0; i < n; i++){
+
+        lastseen[s[i] - 'a'] = i;
+        if(lastseen[0] != -1 && lastseen[1] != -1 && lastseen[2] != -1){
+            count = count + 1 + min(lastseen[0], min(lastseen[1], lastseen[2]));
+        }
     }
-     return maxlen;
-
-
+    return count;
 }
+
+
+
 int main(){
-    string s = "aaabbccd";
-    int key = 3;
-    cout<<fun1(s, key)<<endl;
+    string s = "bbacba";
+    cout<<fun(s)<<endl;
     return 0;
 }
