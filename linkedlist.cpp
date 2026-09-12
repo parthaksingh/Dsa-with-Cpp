@@ -18,8 +18,33 @@ public:
     }
 };
 
+Node* convertArr2ll(vector<int> &ans){
+    Node* head = new Node(ans[0]);
+    Node* mover = head;
+    for(int i = 1; i < ans.size(); i++){
+        Node* temp = new Node(ans[i]);
+        mover->next = temp;
+        mover = temp;
+    }
+    return head;
+}
+
+int lengthofLL(Node* head){
+    int cnt = 0;
+    Node* temp = head;
+
+    while(temp){
+        temp = temp->next;
+        cnt++;
+    }
+    return cnt;
+}
+
 int main(){
-    // vector<int> ans = {2, 5, 8, 7};
+     vector<int> ans = {2, 5, 8, 7};
+     Node* head = convertArr2ll(ans);
+     cout<<lengthofLL(head);
+     //cout<<head->data;
     // //first method;
     // Node* head = new Node(ans[0]);
 
@@ -31,16 +56,16 @@ int main(){
     // third->next = fourth;
 
     // Create and traverse linked list
-    Node* fourth = new Node(7, nullptr);
-    Node* third = new Node(8, fourth);
-    Node* second = new Node(5, third);
-    Node* head = new Node(2, second);
+    // Node* fourth = new Node(7, nullptr);
+    // Node* third = new Node(8, fourth);
+    // Node* second = new Node(5, third);
+    // Node* head = new Node(2, second);
 
-    Node* temp = head;
-    while(temp != nullptr){
-        cout<<temp->data<<" ";
-        temp = temp->next;
-    }
+    // Node* temp = head;
+    // while(temp != nullptr){
+    //     cout<<temp->data<<" ";
+    //     temp = temp->next;
+    // }
     cout<<endl;
 
     return 0;
