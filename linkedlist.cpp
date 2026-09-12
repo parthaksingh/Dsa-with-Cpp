@@ -40,10 +40,23 @@ int lengthofLL(Node* head){
     return cnt;
 }
 
+int checkthevalue(Node* head, int val){
+    Node* temp = head;
+    while(temp){
+        if(temp->data== val) return 1;
+        temp = temp->next;
+    }
+    return 0;
+}
+
 int main(){
      vector<int> ans = {2, 5, 8, 7};
      Node* head = convertArr2ll(ans);
-     cout<<lengthofLL(head);
+     cout<<checkthevalue(head, 5)<<endl;
+     cout<<checkthevalue(head, 6);
+     
+     //cout<<lengthofLL(head);
+    
      //cout<<head->data;
     // //first method;
     // Node* head = new Node(ans[0]);
