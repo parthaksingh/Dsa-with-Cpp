@@ -19,15 +19,22 @@ public:
 };
 
 int main(){
-    vector<int> ans = {2, 5, 8, 7};
-    Node* head = new Node(ans[0]);
+    // vector<int> ans = {2, 5, 8, 7};
+    // //first method;
+    // Node* head = new Node(ans[0]);
 
-    Node* second = new Node(ans[1]);
-    head->next = second;
-    Node* third = new Node(ans[2]);
-    second->next = third;
-    Node* fourth = new Node(ans[3]);
-    third->next = fourth;
+    // Node* second = new Node(ans[1]);
+    // head->next = second;
+    // Node* third = new Node(ans[2]);
+    // second->next = third;
+    // Node* fourth = new Node(ans[3]);
+    // third->next = fourth;
+
+    // Create and traverse linked list
+    Node* fourth = new Node(7, nullptr);
+    Node* third = new Node(8, fourth);
+    Node* second = new Node(5, third);
+    Node* head = new Node(2, second);
 
     Node* temp = head;
     while(temp != nullptr){
