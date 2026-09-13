@@ -48,13 +48,29 @@ int checkthevalue(Node* head, int val){
     }
     return 0;
 }
+//DeletionHead from the ll;
+Node* deletionHead(Node* head){
+    if(head == NULL) return head;
+    Node* temp = head;
+    head = head->next;
+
+    delete temp;
+    return head;
+}
+
+
 
 int main(){
      vector<int> ans = {2, 5, 8, 7};
      Node* head = convertArr2ll(ans);
-     cout<<checkthevalue(head, 5)<<endl;
-     cout<<checkthevalue(head, 6);
-     
+    //  cout<<checkthevalue(head, 5)<<endl;
+    //  cout<<checkthevalue(head, 6);
+    
+    
+    head = deletionHead(head);
+    
+
+
      //cout<<lengthofLL(head);
     
      //cout<<head->data;
@@ -74,11 +90,11 @@ int main(){
     // Node* second = new Node(5, third);
     // Node* head = new Node(2, second);
 
-    // Node* temp = head;
-    // while(temp != nullptr){
-    //     cout<<temp->data<<" ";
-    //     temp = temp->next;
-    // }
+    Node* temp = head;
+    while(temp != nullptr){
+        cout<<temp->data<<" ";
+        temp = temp->next;
+     }
     cout<<endl;
 
     return 0;
