@@ -57,6 +57,18 @@ Node* deletionHead(Node* head){
     delete temp;
     return head;
 }
+//deleteTail from the Linkedlist
+Node* deleteTail(Node* head){
+    if(head == NULL || head->next == NULL) return NULL;
+
+    Node* temp = head;
+    while(temp->next->next != NULL){
+        temp = temp->next;
+    }
+    delete temp->next;
+    temp->next = NULL;
+    return head;
+}
 
 
 
@@ -67,8 +79,8 @@ int main(){
     //  cout<<checkthevalue(head, 6);
     
     
-    head = deletionHead(head);
-    
+    //head = deletionHead(head);
+    Node* head1 = deleteTail(head);
 
 
      //cout<<lengthofLL(head);
@@ -90,7 +102,7 @@ int main(){
     // Node* second = new Node(5, third);
     // Node* head = new Node(2, second);
 
-    Node* temp = head;
+    Node* temp = head1;
     while(temp != nullptr){
         cout<<temp->data<<" ";
         temp = temp->next;
