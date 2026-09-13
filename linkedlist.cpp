@@ -69,7 +69,31 @@ Node* deleteTail(Node* head){
     temp->next = NULL;
     return head;
 }
+//deleteThe Kth element for the ll;
+Node* deleteKthElement(Node* head, int k){
+    if(head == NULL) return head;
 
+    if(k == 1){
+        Node* temp = head;
+        head = temp->next;
+        delete temp;
+        return head;
+    }
+    int count = 0;
+    Node* temp = head;
+    Node* prev = NULL;
+    while(temp!=NULL){
+        count++;
+        if(count == k){
+            prev->next = prev->next->next;
+            delete temp;
+            break;
+        }
+        prev = temp;
+        temp = temp->next;
+    }
+    return head;
+}
 
 
 int main(){
@@ -80,7 +104,9 @@ int main(){
     
     
     //head = deletionHead(head);
-    Node* head1 = deleteTail(head);
+    //Node* head1 = deleteTail(head);
+
+    Node* head2 = deleteKthElement(head, 3);
 
 
      //cout<<lengthofLL(head);
@@ -102,7 +128,7 @@ int main(){
     // Node* second = new Node(5, third);
     // Node* head = new Node(2, second);
 
-    Node* temp = head1;
+    Node* temp = head2;
     while(temp != nullptr){
         cout<<temp->data<<" ";
         temp = temp->next;
