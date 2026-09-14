@@ -176,7 +176,9 @@ Node* InsertEl_value(Node* head, int el, int val){
     }
 
     if(head->data == val){
-        return new Node(el, head);    
+        Node* newnode = new Node(el);
+        newnode->next =  head;
+        return newnode;   
     }
 
     Node* temp = head;
