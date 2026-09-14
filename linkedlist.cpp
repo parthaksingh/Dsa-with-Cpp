@@ -95,6 +95,30 @@ Node* deleteKthElement(Node* head, int k){
     return head;
 }
 
+//Delete the value from the linkedlist
+
+Node* deletevalue(Node* head, int val){
+    if(head == NULL) return head;
+    
+    if(head->data == val){
+        Node* temp = head;
+        head = head->next;
+        delete temp;
+        return head;
+    }
+    Node* temp = head;
+    Node* prev = NULL;
+    while(temp != NULL){
+        if(temp->data == val){
+            prev->next = prev->next->next;
+            delete temp;
+            break;
+        }
+        prev = temp;
+        temp = temp->next;
+    }
+    return head;
+}
 
 int main(){
      vector<int> ans = {2, 5, 8, 7};
@@ -106,11 +130,11 @@ int main(){
     //head = deletionHead(head);
     //Node* head1 = deleteTail(head);
 
-    Node* head2 = deleteKthElement(head, 3);
+    //Node* head2 = deleteKthElement(head, 3);
 
+    Node* head2 = deletevalue(head, 2);
 
      //cout<<lengthofLL(head);
-    
      //cout<<head->data;
     // //first method;
     // Node* head = new Node(ans[0]);
