@@ -120,6 +120,14 @@ Node* deletevalue(Node* head, int val){
     return head;
 }
 
+// Insertion in Head in linkedlist
+Node* InsertHead(Node* head, int val){
+    Node* temp = new Node(val, head);
+    return temp;
+}
+
+
+
 int main(){
      vector<int> ans = {2, 5, 8, 7};
      Node* head = convertArr2ll(ans);
@@ -132,7 +140,9 @@ int main(){
 
     //Node* head2 = deleteKthElement(head, 3);
 
-    Node* head2 = deletevalue(head, 2);
+    //Node* head2 = deletevalue(head, 2);
+
+    head = InsertHead(head, 100);
 
      //cout<<lengthofLL(head);
      //cout<<head->data;
@@ -152,7 +162,7 @@ int main(){
     // Node* second = new Node(5, third);
     // Node* head = new Node(2, second);
 
-    Node* temp = head2;
+    Node* temp = head;
     while(temp != nullptr){
         cout<<temp->data<<" ";
         temp = temp->next;
