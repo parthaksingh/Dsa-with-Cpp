@@ -126,7 +126,20 @@ Node* InsertHead(Node* head, int val){
     return temp;
 }
 
-
+//Insertion in the Tail in  Linkedlist
+Node* InsertTail(Node* head, int val){
+    if(head == NULL){
+        return new Node(val);
+    }
+    Node* temp = head;
+    while(temp->next != NULL){
+        temp = temp->next;
+    }
+        Node* newNode = new Node(val);
+        temp->next = newNode;
+        return head;
+    
+}
 
 int main(){
      vector<int> ans = {2, 5, 8, 7};
@@ -142,7 +155,9 @@ int main(){
 
     //Node* head2 = deletevalue(head, 2);
 
-    head = InsertHead(head, 100);
+    //head = InsertHead(head, 100);
+
+    head = InsertTail(head, 4);
 
      //cout<<lengthofLL(head);
      //cout<<head->data;
