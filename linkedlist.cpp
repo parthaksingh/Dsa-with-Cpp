@@ -167,7 +167,29 @@ Node* InsertKth_place(Node* head, int el, int k){
             temp = temp->next;
         }
         return head;
+}
+// Insert before the value of linkedlist
+
+Node* InsertEl_value(Node* head, int el, int val){
+    if(head == NULL){
+        return NULL;
     }
+
+    if(head->data == val){
+        return new Node(el, head);    
+    }
+
+    Node* temp = head;
+    while(temp->next != NULL){
+        if(temp->next->data == val){
+            Node* x = new Node(el, temp->next);
+            temp->next = x;
+            break;
+        }
+        temp = temp->next;
+    }
+    return head;
+}
 
 int main(){
      vector<int> ans = {2, 5, 8, 7};
@@ -187,7 +209,9 @@ int main(){
 
     //head = InsertTail(head, 4);
 
-    head = InsertKth_place(head, 123, 2);
+    //head = InsertKth_place(head, 123, 2);
+
+    head = InsertEl_value(head, 100, 8);
 
      //cout<<lengthofLL(head);
      //cout<<head->data;
