@@ -141,6 +141,34 @@ Node* InsertTail(Node* head, int val){
     
 }
 
+//Insert Kth place in the Linkedlist
+Node* InsertKth_place(Node* head, int el, int k){
+    if(head == NULL){
+        if(k == 1){
+            return new Node(el);
+        }else{
+            return NULL;
+        }
+    }
+        if(k == 1){
+            Node* temp = new Node(el, head);
+            return temp;
+        }
+        int count = 0;
+        Node* temp = head;
+        while(temp != NULL){
+            count++;
+            if(count == k-1){
+                Node* x = new Node(el);
+                x->next = temp->next;
+                temp->next = x;
+                break;
+            }
+            temp = temp->next;
+        }
+        return head;
+    }
+
 int main(){
      vector<int> ans = {2, 5, 8, 7};
      Node* head = convertArr2ll(ans);
@@ -157,7 +185,9 @@ int main(){
 
     //head = InsertHead(head, 100);
 
-    head = InsertTail(head, 4);
+    //head = InsertTail(head, 4);
+
+    head = InsertKth_place(head, 123, 2);
 
      //cout<<lengthofLL(head);
      //cout<<head->data;
