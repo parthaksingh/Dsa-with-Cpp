@@ -33,7 +33,7 @@ int lengthofLL(Node* head){
     int cnt = 0;
     Node* temp = head;
 
-    while(temp){
+    while(temp != NULL){
         temp = temp->next;
         cnt++;
     }
@@ -42,7 +42,7 @@ int lengthofLL(Node* head){
 
 int checkthevalue(Node* head, int val){
     Node* temp = head;
-    while(temp){
+    while(temp != NULL){
         if(temp->data== val) return 1;
         temp = temp->next;
     }
@@ -128,14 +128,16 @@ Node* InsertHead(Node* head, int val){
 
 //Insertion in the Tail in  Linkedlist
 Node* InsertTail(Node* head, int val){
+    Node* newnode = new Node(val);
     if(head == NULL){
-        return new Node(val);
+        return newnode;
+        //return new Node(val);
     }
     Node* temp = head;
     while(temp->next != NULL){
         temp = temp->next;
     }
-        Node* newNode = new Node(val);
+        //Node* newNode = new Node(val);
         temp->next = newNode;
         return head;
     
@@ -234,7 +236,7 @@ int main(){
     // Node* head = new Node(2, second);
 
     Node* temp = head;
-    while(temp != nullptr){
+    while(temp != NULL){
         cout<<temp->data<<" ";
         temp = temp->next;
      }
