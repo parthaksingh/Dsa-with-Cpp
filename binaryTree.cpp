@@ -79,8 +79,8 @@ void levelOrderTrave(node* root){
         if(temp->right){
             q.push(temp->right);
         }
-    }
-    }
+      }
+   }
 }
 
 void inorder(node* root){
@@ -109,16 +109,52 @@ void postorder(node* root){
     postorder(root->right);
     cout<<root->data<<" ";
 }
+
+node* buildfromlevelorder(node* root){
+    queue<node*> q;
+    cout<<"enter data from root: "<<endl;
+    int data;
+    cin >> data;
+
+    root = new node(data);
+    q.push(root);
+
+    while(!q.empty()){
+        node* temp = q.front();
+        q.pop();
+        cout<<"enter the left node data: "<<temp->data<<endl;
+        int leftdata;
+        cin >> leftdata;
+        if(leftdata != -1){
+            temp->left = new node(leftdata);
+            q.push(temp->left);
+        }
+        cout<<"enter the right node data: "<<temp->data<<endl;
+        int rightdata;
+        cin>> rightdata;
+        if(rightdata!= -1){
+            temp->right = new node(rightdata);
+            q.push(temp->right);
+        }
+
+    }
+    return root;
+}
+
 int main(){
     node* root = NULL;
-    root = buildtree(root);
+    //root = buildtree(root);
     //cout<<"tree: "<<endl;
-    //levelOrderTrave(root);
-    inorder(root);
+
+    root = buildfromlevelorder(root);
     cout<<endl;
-    preorder(root);
-    cout<<endl;
-    postorder(root);
+    levelOrderTrave(root);
+    // inorder(root);
+    // cout<<endl;
+    // preorder(root);
+    // cout<<endl;
+    // postorder(root);
+
 
     return 0;
 }
